@@ -11,3 +11,4 @@ The repository is divided in branches, each containing a simple project that imp
 
 - master: vanilla Laravel freshly installed via composer, it's a local demo therefore I'm happy to leave the `.env` in the repository so it's easier to spin up a local environment on demand
 - crud-app-with-laravel-and-mysql: a very basic CRUD app using Laravel and MySQL
+- graphql-api: and example of a GraphQL API Using Laravel
