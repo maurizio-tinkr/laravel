@@ -12,3 +12,36 @@ The repository is divided in branches, each containing a simple project that imp
 - master: vanilla Laravel freshly installed via composer, it's a local demo therefore I'm happy to leave the `.env` in the repository so it's easier to spin up a local environment on demand
 - crud-app-with-laravel-and-mysql: a very basic CRUD app using Laravel and MySQL
 - graphql-api: and example of a GraphQL API Using Laravel
+
+## CLI commands used
+
+```shell
+composer require rebing/graphql-laravel
+php artisan vendor:publish --provider="Rebing\\GraphQL\\GraphQLServiceProvider"
+php artisan make:model -m Category
+php artisan make:model -m Quest
+php artisan migrate
+php artisan make:factory QuestFactory --model=Quest
+php artisan make:factory CategoryFactory --model=Category
+php artisan db:seed
+php artisan make:graphql:type CategoryType
+php artisan make:graphql:type QuestType
+php artisan make:graphql:query Quest/QuestQuery
+php artisan make:graphql:query Quest/QuestsQuery
+php artisan make:graphql:query Category/CategoryQuery
+php artisan make:graphql:query Category/CategoriesQuery
+php artisan make:graphql:mutation Category/CreateCategoryMutation
+php artisan make:graphql:mutation Category/DeleteCategoryMutation
+php artisan make:graphql:mutation Category/UpdateCategoryMutation
+php artisan make:graphql:mutation Quest/CreateQuestMutation
+php artisan make:graphql:mutation Quest/DeleteQuestMutation
+php artisan make:graphql:mutation Quest/UpdateQuestMutation
+```
+
+## How to interrogate the endpoint
+
+```shell
+curl -X POST --location "https://laravel.test/graphql" \
+-H "Content-Type: application/json" \
+-d "{\"query\":\"query{quest(id: 1) { id title reward description}}\"}"
+```
