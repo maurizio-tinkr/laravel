@@ -13,3 +13,25 @@ The repository is divided in branches, each containing a simple project that imp
 - crud-app-with-laravel-and-mysql: a very basic CRUD app using Laravel and MySQL
 - graphql-api: and example of a GraphQL API Using Laravel
 - pest-php: an example of how to use Pest in Laravel 10 using [pestphp/pest-plugin-laravel](https://github.com/pestphp/pest-plugin-laravel)
+
+## CLI commands used
+
+Install Pest:
+
+```shell
+composer require pestphp/pest-plugin-laravel --dev
+./vendor/bin/pest --init
+./vendor/bin/pest
+```
+
+Use Pest in the project:
+```shell
+php artisan make:model Product -m
+php artisan migrate
+php artisan pest:test ProductModelTest --unit
+php artisan make:controller ProductController --resource
+php artisan pest:test ProductControllerTest
+php artisan test
+php artisan test --filter ProductModelTest
+php artisan test --filter ProductControllerTest
+```
